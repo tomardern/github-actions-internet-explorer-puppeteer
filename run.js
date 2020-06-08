@@ -6,5 +6,6 @@ const puppeteer = require("puppeteer-ie");
   await page.goto("https://www.bloomandwild.com/");
   const title = await page.title();
   console.log("Title is", title);
+  await page.close();
   await browser.close();
 })();
