@@ -1,0 +1,16 @@
+on: push
+
+jobs:
+  translation_check:
+    runs-on: windows-2019
+    name: Init
+    steps:
+      # - name: Checkout local repo on this branch
+      #   uses: actions/checkout@v2
+      #   with:
+      #     ref: ${{ github.event.pull_request.head.ref }}
+      #     path: ./
+
+      - name: Npm install
+        run: |
+          npm install puppeteer-ie --save-dev
