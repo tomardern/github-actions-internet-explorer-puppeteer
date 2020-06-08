@@ -1,0 +1,23 @@
+{
+  "name": "github-actions-internet-explorer-puppeteer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomardern/github-actions-internet-explorer-puppeteer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomardern/github-actions-internet-explorer-puppeteer/issues"
+  },
+  "homepage": "https://github.com/tomardern/github-actions-internet-explorer-puppeteer#readme",
+  "dependencies": {
+    "puppeteer-core": "^3.3.0",
+    "puppeteer-ie": "^0.5.7"
+  }
+}

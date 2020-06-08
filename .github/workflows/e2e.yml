@@ -5,12 +5,24 @@ jobs:
     runs-on: windows-2019
     name: Init
     steps:
-      # - name: Checkout local repo on this branch
-      #   uses: actions/checkout@v2
-      #   with:
-      #     ref: ${{ github.event.pull_request.head.ref }}
-      #     path: ./
+      - name: Checkout local repo on this branch
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          path: ./
 
-      - name: Npm install
+      - name: Get npm cache directory
+        id: npm-cache
         run: |
-          npm install puppeteer-ie --save-dev
+          echo "::set-output name=dir::$(npm config get cache)"
+
+      - uses: actions/cache@v2
+        with:
+          path: ${{ steps.npm-cache.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Test
+        run: |
+          node run.js
