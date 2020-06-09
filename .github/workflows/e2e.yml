@@ -26,7 +26,9 @@ jobs:
       - name: NPM install
         run: |
           npm install
-          npm install -g testcafe
+
+      - name: Install FFMPEG
+        run: choco install ffmpeg
 
       - name: Test
         timeout-minutes: 5
