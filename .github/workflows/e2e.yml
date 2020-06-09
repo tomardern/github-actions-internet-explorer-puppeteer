@@ -11,29 +11,30 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           path: ./
 
-      - name: Get npm cache directory
-        id: npm-cache
-        run: |
-          echo "::set-output name=dir::$(npm config get cache)"
+      # - name: Get npm cache directory
+      #   id: npm-cache
+      #   run: |
+      #     echo "::set-output name=dir::$(npm config get cache)"
 
-      - uses: actions/cache@v2
+      # - uses: actions/cache@v2
+      #   with:
+      #     path: ${{ steps.npm-cache.outputs.dir }}
+      #     key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-node-
+
+      - name: Run tests
+        uses: DevExpress/testcafe-action@latest
         with:
-          path: ${{ steps.npm-cache.outputs.dir }}
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - name: NPM install
-        run: |
-          npm install
-
-      - name: Install FFMPEG
-        run: choco install ffmpeg
-
-      - name: FFMPEG check
-        run: ffmpeg -list_devices true -f dshow -i dummy
-
-      - name: Test
-        timeout-minutes: 5
-        run: |
-          npm run testcafe:ie
+          args: "testcafe ie tests/test1.ts"
+      # - name: NPM install
+      #   run: |
+      #     npm install
+      # - name: Install FFMPEG
+      #   run: choco install ffmpeg
+      # - name: FFMPEG check
+      #   run: ffmpeg -list_devices true -f dshow -i dummy
+      # - name: Test
+      #   timeout-minutes: 5
+      #   run: |
+      #     npm run testcafe:ie
