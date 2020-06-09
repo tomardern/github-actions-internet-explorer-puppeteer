@@ -7,5 +7,7 @@ const puppeteer = require("puppeteer-ie");
   const title = await page.title();
   console.log("Title is", title);
   await page.close();
+  console.log("Page is closed");
   await browser.close();
+  console.log("Browser is closed");
 })();

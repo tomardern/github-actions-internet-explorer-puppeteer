@@ -27,5 +27,6 @@ jobs:
         run: npm install
 
       - name: Test
+        timeout-minutes: 5
         run: |
           node run.js
