@@ -32,7 +32,7 @@ jobs:
           args: "ie tests/test1.ts  -s path=./screenshots"
 
       - name: List screenshots
-        run: Get-ChildItem -Path ./screenshots
+        run: Get-ChildItem -Path .
       # - name: NPM install
       #   run: |
       #     npm install
