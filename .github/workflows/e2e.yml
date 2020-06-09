@@ -23,13 +23,16 @@ jobs:
       #     restore-keys: |
       #       ${{ runner.os }}-node-
 
-      - name: Install FFMPEG
-        run: choco install ffmpeg
+      # - name: Install FFMPEG
+      #   run: choco install ffmpeg
 
       - name: Run tests
         uses: DevExpress/testcafe-action@latest
         with:
-          args: "ie tests/test1.ts --video artifacts/videos"
+          args: "ie tests/test1.ts  -s path=screenshots"
+
+      - name: List screenshots
+        run: Get-ChildItem -Path ./screenshots
       # - name: NPM install
       #   run: |
       #     npm install
