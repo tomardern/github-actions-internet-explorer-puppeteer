@@ -29,7 +29,7 @@ jobs:
       - name: Run tests
         uses: DevExpress/testcafe-action@latest
         with:
-          args: "ie tests/test1.ts  -s path=screenshots"
+          args: "ie tests/test1.ts  -s path=./screenshots"
 
       - name: List screenshots
         run: Get-ChildItem -Path ./screenshots
