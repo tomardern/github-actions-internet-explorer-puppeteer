@@ -19,8 +19,9 @@
   },
   "homepage": "https://github.com/tomardern/github-actions-internet-explorer-puppeteer#readme",
   "dependencies": {
-    "puppeteer-core": "^3.3.0",
-    "puppeteer-ie": "^0.5.7"
+    "testcafe": "^1.8.6"
+    // "puppeteer-core": "^3.3.0",
+    // "puppeteer-ie": "^0.5.7"
   },
   "devDependencies": {
     "testcafe": "^1.8.6"

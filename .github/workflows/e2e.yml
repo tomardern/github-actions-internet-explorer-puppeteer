@@ -24,7 +24,9 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: NPM install
-        run: npm install
+        run: |
+          npm install
+          npm install -g testcafe
 
       - name: Test
         timeout-minutes: 5
