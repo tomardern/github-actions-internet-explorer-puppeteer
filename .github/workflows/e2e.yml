@@ -30,6 +30,9 @@ jobs:
       - name: Install FFMPEG
         run: choco install ffmpeg
 
+      - name: FFMPEG check
+        run: ffmpeg -list_devices true -f dshow -i dummy
+
       - name: Test
         timeout-minutes: 5
         run: |
