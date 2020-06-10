@@ -11,7 +11,7 @@ jobs:
       - name: Output ENV
         env:
           WORKER_NUMBER: ${{ matrix.WORKER_NUMBERS }}
-          WORKER_LIST: ${{ toJson(matrix) }}
+          WORKER_LIST: ${{ toJson(strategy.matrix.WORKER_NUMBERS) }}
         run: |
           echo "Worker number"
           echo "$WORKER_NUMBER"
