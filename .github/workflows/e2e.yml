@@ -10,14 +10,14 @@ jobs:
     steps:
       - name: Output ENV
         env:
-          WORKER_NUMBER: ${{ matrix.WORKER_NUMBERS }}
-          WORKER_LIST: ${{ toJson(strategy) }}
+          WORKER_INDEX: ${{ strategy.job-index }}
+          TOTAL_WORKERS: ${{ strategy.job-total }}
         run: |
           echo "Worker number"
-          echo "$WORKER_NUMBER"
+          echo "$WORKER_INDEX"
           echo "----------"
           echo "Worker list"
-          echo "$WORKER_LIST"
+          echo "$TOTAL_WORKERS"
   # translation_check:
   #   runs-on: windows-2019
   #   name: Init
