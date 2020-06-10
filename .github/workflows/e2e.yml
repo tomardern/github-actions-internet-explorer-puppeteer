@@ -1,46 +1,58 @@
 on: push
 
 jobs:
-  translation_check:
-    runs-on: windows-2019
-    name: Init
+  matrix_check:
+    runs-on: ubuntu-latest
+    name: Testing Matrix Strategy
+    strategy:
+      matrix:
+        WORKER_NUMBERS: [1, 2, 3, 4, 5] # For each new "Worker" we want to add - just add it to the array
     steps:
-      - name: Checkout local repo on this branch
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
-          path: ./
-
-      # - name: Get npm cache directory
-      #   id: npm-cache
-      #   run: |
-      #     echo "::set-output name=dir::$(npm config get cache)"
-
-      # - uses: actions/cache@v2
-      #   with:
-      #     path: ${{ steps.npm-cache.outputs.dir }}
-      #     key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-node-
-
-      # - name: Install FFMPEG
-      #   run: choco install ffmpeg
-
-      - name: Run tests
-        uses: DevExpress/testcafe-action@latest
-        with:
-          args: "ie tests/test1.ts  -s path=./screenshots"
-
-      - name: List screenshots
-        run: Get-ChildItem -Path ./tests
-      # - name: NPM install
-      #   run: |
-      #     npm install
-      # - name: Install FFMPEG
-      #   run: choco install ffmpeg
-      # - name: FFMPEG check
-      #   run: ffmpeg -list_devices true -f dshow -i dummy
-      # - name: Test
-      #   timeout-minutes: 5
-      #   run: |
-      #     npm run testcafe:ie
+      - name: Output ENV
+        env:
+          WORKER_NUMBER: ${{ matrix.WORKER_NUMBERS }}
+          WORKER_LIST: ${{ toJson(matrix) }}
+        run: |
+          echo "Worker number"
+          echo "$WORKER_NUMBER"
+          echo "----------"
+          echo "Worker list"
+          echo "$WORKER_LIST"
+  # translation_check:
+  #   runs-on: windows-2019
+  #   name: Init
+  #   steps:
+  #     - name: Checkout local repo on this branch
+  #       uses: actions/checkout@v2
+  #       with:
+  #         ref: ${{ github.event.pull_request.head.ref }}
+  #         path: ./
+  #     # - name: Get npm cache directory
+  #     #   id: npm-cache
+  #     #   run: |
+  #     #     echo "::set-output name=dir::$(npm config get cache)"
+  #     # - uses: actions/cache@v2
+  #     #   with:
+  #     #     path: ${{ steps.npm-cache.outputs.dir }}
+  #     #     key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+  #     #     restore-keys: |
+  #     #       ${{ runner.os }}-node-
+  #     # - name: Install FFMPEG
+  #     #   run: choco install ffmpeg
+  #     - name: Run tests
+  #       uses: DevExpress/testcafe-action@latest
+  #       with:
+  #         args: "ie tests/test1.ts  -s path=./screenshots"
+  #     - name: List screenshots
+  #       run: Get-ChildItem -Path ./tests
+  #     # - name: NPM install
+  #     #   run: |
+  #     #     npm install
+  #     # - name: Install FFMPEG
+  #     #   run: choco install ffmpeg
+  #     # - name: FFMPEG check
+  #     #   run: ffmpeg -list_devices true -f dshow -i dummy
+  #     # - name: Test
+  #     #   timeout-minutes: 5
+  #     #   run: |
+  #     #     npm run testcafe:ie
