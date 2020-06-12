@@ -24,6 +24,7 @@ jobs:
       #       ${{ runner.os }}-node-
 
       - name: Run tests
+        timeout-minutes: 5
         uses: DevExpress/testcafe-action@latest
         with:
           args: "ie tests/test1.ts"
