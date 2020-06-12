@@ -1,12 +1,12 @@
 import { Selector, ClientFunction } from "testcafe";
 
-fixture(`Checkout `).page(`https://www.bloomandwild.com/send-flowers`);
+fixture(`Checkout `).page(`https://www.bloomandwild.com`);
 
 test("Basic Checkout", async (t) => {
   // await handleWarnings();
   await t
     // Carousel
-    .click("bw-product-carousel bw-product-card a")
+    // .click("bw-product-carousel bw-product-card a")
     .wait(5 * 1000);
   // // Address Details
   // .typeText('bw-recipient-search [formcontrolname="name"]', "Tom Ardern")
