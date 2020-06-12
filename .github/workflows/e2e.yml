@@ -27,7 +27,7 @@ jobs:
         timeout-minutes: 5
         uses: DevExpress/testcafe-action@latest
         with:
-          args: "ie tests/test1.ts"
+          args: "ie tests/test1.ts --skip-js-errors --skip-uncaught-errors --page-load-timeout 10000"
       # - name: NPM install
       #   run: |
       #     npm install

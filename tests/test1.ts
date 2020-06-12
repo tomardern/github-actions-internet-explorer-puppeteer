@@ -2,17 +2,8 @@ import { Selector, ClientFunction } from "testcafe";
 
 fixture(`Checkout `).page(`https://www.bloomandwild.com/send-flowers`);
 
-const handleWarnings = ClientFunction(() => {
-  console.error = (msg) => {
-    console.log("error is", msg);
-  };
-  console.warn = (msg) => {
-    console.log("warn is", msg);
-  };
-});
-
 test("Basic Checkout", async (t) => {
-  await handleWarnings();
+  // await handleWarnings();
   await t
     // Carousel
     .click(
