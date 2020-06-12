@@ -6,27 +6,25 @@ test("Basic Checkout", async (t) => {
   // await handleWarnings();
   await t
     // Carousel
-    .click(
-      'bw-product-carousel bw-product-card [bwtrackas="checkout.carousel.carouselProduct.carouselSend"]'
-    )
-    .wait(5 * 1000)
-    // Address Details
-    .typeText('bw-recipient-search [formcontrolname="name"]', "Tom Ardern")
-    .typeText('bw-recipient-search [name="addressSearch"]', "16 CR4 2HQ")
-    .wait(500)
-    .click("bw-recipient-search .address-search-results .dropdown-item")
-    .wait(500)
-
-    // User DEtails
-    .typeText('bw-user-details [formcontrolname="name"]', "Tom Ardern")
-    .typeText(
-      'bw-user-details [formcontrolname="email"]',
-      "tom.ardern@gmail.com"
-    )
-    .wait(2 * 1000)
-
-    .click('[bwtrackas="checkout.orderDetails.continueToPayment"]')
+    .click("bw-product-carousel bw-product-card a")
     .wait(5 * 1000);
+  // // Address Details
+  // .typeText('bw-recipient-search [formcontrolname="name"]', "Tom Ardern")
+  // .typeText('bw-recipient-search [name="addressSearch"]', "16 CR4 2HQ")
+  // .wait(500)
+  // .click("bw-recipient-search .address-search-results .dropdown-item")
+  // .wait(500)
+
+  // // User DEtails
+  // .typeText('bw-user-details [formcontrolname="name"]', "Tom Ardern")
+  // .typeText(
+  //   'bw-user-details [formcontrolname="email"]',
+  //   "tom.ardern@gmail.com"
+  // )
+  // .wait(2 * 1000)
+
+  // .click('[bwtrackas="checkout.orderDetails.continueToPayment"]')
+  // .wait(5 * 1000);
   // // Payment
   // .switchToIframe('bw-card-entry iframe')
   // .typeText('[name="cardnumber"]', '4242 4242 4242 4242')
